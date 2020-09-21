@@ -1,0 +1,6 @@
+#!/bin/bash
+systemctl start tomcat
+systemctl enable tomcat
+/usr/bin/aws s3 sync s3://linuxsuperhero-code111523232323232 /usr/share/tomcat/conf/
+/bin/touch /var/spool/cron/root
+sudo /bin/echo '*/5 * * * * aws s3 sync s3://linuxsuperhero-code111523232323232 /usr/share/tomcat/conf/' >> /var/spool/cron/root

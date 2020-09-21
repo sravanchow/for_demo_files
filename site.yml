@@ -1,0 +1,17 @@
+---
+# This playbook deploys a simple standalone Tomcat 8.5 server.
+
+- hosts: dev
+  remote_user: ec2-user
+  become: true
+  vars:
+    tomcat_version: 8.5.23
+    tomcat_permissions_production: True
+    tomcat_users:
+       - username: "tomcat"
+         password: "admin123"
+         roles: "tomcat,admin,manager,manager-gui"
+
+
+  roles:
+    - role: zaxos.tomcat-ansible-role
